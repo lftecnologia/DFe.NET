@@ -22,6 +22,7 @@ public class DanfeNfceDocument : IDocument
     private NFe.Classes.NFe? _nfe;
     private float _tamanhoImpressao = 300f;
     private float _tamanhoFontePadrao;
+    public float LogoLarguraMaximaMm { get; set; } = 21.17f;
 
     public DanfeNfceDocument(string xml, byte[]? logo)
     {
@@ -80,7 +81,9 @@ public class DanfeNfceDocument : IDocument
             {
                 if (_logo != null)
                 {
-                    column.Item().AlignCenter().MaxWidth(60).MaxHeight(60).Image(_logo);
+                    column.Item().AlignCenter()
+                        .MaxWidth(LogoLarguraMaximaMm, Unit.Millimetre)
+                        .Image(_logo).FitWidth();
                 }
                 column.Item().AlignCenter().Text(_nfe.infNFe.emit.xFant).FontSize(_tamanhoFontePadrao + 2).SemiBold();
                 column.Item().AlignCenter().Text(_nfe.infNFe.emit.xNome).FontSize(_tamanhoFontePadrao + 2);
