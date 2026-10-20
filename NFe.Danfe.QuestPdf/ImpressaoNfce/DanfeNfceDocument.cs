@@ -22,6 +22,12 @@ public class DanfeNfceDocument : IDocument
     private NFe.Classes.NFe? _nfe;
     private float _tamanhoImpressao = 300f;
     private float _tamanhoFontePadrao;
+
+    // Margens configuráveis (cm) — valores padrão originais
+    public float MargemEsquerda { get; set; } = 0.4f;
+    public float MargemDireita  { get; set; } = 0.8f;
+    public float MargemTopo     { get; set; } = 0.0f;
+    public float MargemBase     { get; set; } = 0.0f;
     public float LogoLarguraMaximaMm { get; set; } = 21.17f;
 
     public DanfeNfceDocument(string xml, byte[]? logo)
@@ -59,10 +65,10 @@ public class DanfeNfceDocument : IDocument
         container
             .Page(page =>
             {
-                page.MarginLeft(0.4f, Unit.Centimetre);
-                page.MarginRight(0.8f, Unit.Centimetre);
-                page.MarginTop(0);
-                page.MarginBottom(0);
+                page.MarginLeft(MargemEsquerda, Unit.Centimetre);
+                page.MarginRight(MargemDireita, Unit.Centimetre);
+                page.MarginTop(MargemTopo, Unit.Centimetre);
+                page.MarginBottom(MargemBase, Unit.Centimetre);
                 page.ContinuousSize(_tamanhoImpressao, Unit.Centimetre);
 
                 page.Header().Element(Cabecalho);
@@ -429,7 +435,8 @@ public class DanfeNfceDocument : IDocument
                     {
                         r.RelativeItem().AlignLeft().Column(c =>
                         {
-                            c.Item().Text(_nfe.infNFe.infAdic.infCpl).FontSize(_tamanhoFontePadrao);
+                            foreach (var linha in _nfe.infNFe.infAdic.infCpl.Split('\n'))
+                                c.Item().Text(linha.Trim()).FontSize(_tamanhoFontePadrao);
                         });
                     });
                 }
