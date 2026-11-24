@@ -132,6 +132,13 @@ namespace NFe.Classes.Informacoes.Emitente
         public CRT CRT { get; set; }
 
         /// <summary>
+        ///     C21a - Tipo de Regime de Apuração do IBS e da CBS (NT 2026.005)
+        /// </summary>
+        public TipoRegimeIbsCbs? tpRegimeIBSCBS { get; set; }
+
+        public bool ShouldSerializetpRegimeIBSCBS() => tpRegimeIBSCBS.HasValue;
+
+        /// <summary>
         ///     C22 - Inscrição do emitente na Suframa
         ///     <para>8 a 9 dígitos. Obrigatório nas operações com CBS alíquota zero em áreas ZFM/ALC (arts. 451 e 466 da LC 214/25).</para>
         /// </summary>
