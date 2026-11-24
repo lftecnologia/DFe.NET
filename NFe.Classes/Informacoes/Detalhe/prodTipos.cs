@@ -389,6 +389,32 @@ namespace NFe.Classes.Informacoes.Detalhe
     }
 
     /// <summary>
+    ///     I17d - Código de atividade do Simples Nacional (NT 2026.005)
+    /// </summary>
+    public enum AtividadeSimplesNacional
+    {
+        [Description("Revenda de mercadorias, venda de mercadorias industrializadas pelo contribuinte - Anexo I")]
+        [XmlEnum("01")]
+        RevendaOuIndustrializacaoAnexoI = 1,
+
+        [Description("Operações com os demais bens materiais, sem incidência de ICMS - Anexo I")]
+        [XmlEnum("02")]
+        DemaisBensSemIcmsAnexoI = 2,
+
+        [Description("Venda de mercadorias industrializadas pelo contribuinte, com industrialização incentivada na ZFM - Anexo II")]
+        [XmlEnum("03")]
+        IndustrializacaoZfmAnexoII = 3,
+
+        [Description("Operações com os demais bens materiais, com industrialização incentivada na ZFM, sem incidência de ICMS - Anexo II")]
+        [XmlEnum("04")]
+        DemaisBensZfmSemIcmsAnexoII = 4,
+
+        [Description("Operações não tributáveis")]
+        [XmlEnum("90")]
+        NaoTributavel = 90
+    }
+
+    /// <summary>
     ///     Classificação para subapuração do IBS na ZFM. Classificação conforme percentuais definidos no art. 450, § 1º, da LC 214/25 para o cálculo do crédito presumido
     ///     <para>0 - Sem Crédito Presumido</para>>
     ///     <para>1 - Bens de consumo final (55%)</para>>

@@ -134,5 +134,12 @@ namespace NFe.Classes.Informacoes.Emitente
         /// </summary>
         public CRT CRT { get; set; }
 
+        /// <summary>
+        ///     C21a - Tipo de Regime de Apuração do IBS e da CBS (NT 2026.005)
+        /// </summary>
+        public TipoRegimeIbsCbs? tpRegimeIBSCBS { get; set; }
+
+        public bool ShouldSerializetpRegimeIBSCBS() => tpRegimeIBSCBS.HasValue;
+
     }
 }

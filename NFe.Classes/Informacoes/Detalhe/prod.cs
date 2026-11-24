@@ -264,6 +264,11 @@ namespace NFe.Classes.Informacoes.Detalhe
         ///     I17c - Indicador de fornecimento de bem móvel usado
         /// </summary>
         public IndBemMovelUsado? indBemMovelUsado { get; set; }
+
+        /// <summary>
+        ///     I17d - Código de atividade do Simples Nacional para cálculo do IBS/CBS (NT 2026.005)
+        /// </summary>
+        public AtividadeSimplesNacional? cAtivSN { get; set; }
         
         /// <summary>
         ///     I18 - Declaração de Importação
@@ -359,6 +364,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         }
         
         public bool ShouldSerializeindBemMovelUsado() => indBemMovelUsado.HasValue;
+
+        public bool ShouldSerializecAtivSN() => cAtivSN.HasValue;
         
         public bool ShouldSerializetpCredPresIBSZFM() => tpCredPresIBSZFM.HasValue;
     }
